@@ -20,6 +20,21 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB Connected Successfully!'))
   .catch((err) => console.log('MongoDB Connection Error:', err));
 
+// Routes
+const userRoutes = require('./routes/userRoutes');
+const doctorRoutes = require('./routes/doctorRoutes');
+const appointmentRoutes = require('./routes/appointmentRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const prescriptionRoutes = require('./routes/prescriptionRoutes');
+
+app.use('/api/users', userRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api/appointments', appointmentRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/prescriptions', prescriptionRoutes);
+
 // Test route
 app.get('/', (req, res) => {
   res.send('MediCare Connect Server is running!');
