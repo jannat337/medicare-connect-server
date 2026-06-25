@@ -21,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((err) => console.log('MongoDB Connection Error:', err));
 
 // Routes
+const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
@@ -28,6 +29,7 @@ const reviewRoutes = require('./routes/reviewRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const prescriptionRoutes = require('./routes/prescriptionRoutes');
 
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/appointments', appointmentRoutes);
